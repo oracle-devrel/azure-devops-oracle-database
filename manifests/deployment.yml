@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: multicloudapp 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multicloudapp
+  template:
+    metadata:
+      labels:
+        app: multicloudapp 
+    spec:
+      containers:
+        - name: multicloudapp 
+          image: multicloud.azurecr.io/multicloudapp
+          ports:
+          - containerPort: 8080
