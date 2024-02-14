@@ -118,19 +118,25 @@ stages:
                     namespace: $(k8sNamespaceForPR)
                     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
 
+                - script: |
+                    kubectl patch deployment multicloudapp --type='json' -p='[
+                      {"op": "add", "path": "/spec/template/spec/containers/0/env", "value": [{"name": "AZURE_CLIENT_SECRET", "value": "$(AZURE_CLIENT_SECRET)"}]}
+                    ]' --namespace $(k8sNamespace)
+                  displayName: 'Patch Deployment'
+
                 - task: KubernetesManifest@0
                   displayName: Set environment variables in deployment
                   inputs:
                     action: patch
-                    namespace: default
-                    kind: Deployment
+                    namespace: $(k8sNamespaceForPR)
+                    kind: deployment
                     name: 'multicloudapp'
                     arguments: |
                       - op: add
                         path: /spec/template/spec/containers/0/env
                         value: |
                           - name: AZURE_CLIENT_ID
-                            value: 72c76835-1917-4fbc-921a-e688d7f4dcf2
+                            value: '72c76835-1917-4fbc-921a-e688d7f4dcf2'
                           - name: AZURE_CLIENT_SECRET
                             value: $(AZURE_CLIENT_SECRET)
                           - name: AZURE_TENANT_ID
