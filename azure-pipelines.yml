@@ -131,6 +131,9 @@ stages:
                     containers: |
                       $(containerRegistry)/$(imageRepository):$(tag)
 
+                - script: |
+                    echo "This is a bash script test."
+                    displayName: 'Run Bash Script test'
 
                 - script: |
                     kubectl patch deployment multicloudapp --type='json' -p='[
