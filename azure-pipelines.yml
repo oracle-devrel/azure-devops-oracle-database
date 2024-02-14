@@ -122,9 +122,7 @@ stages:
                     kubectl patch deployment multicloudapp --type='json' -p='[
                       {"op": "add", "path": "/spec/template/spec/containers/0/env", "value": [{"name": "AZURE_CLIENT_SECRET", "value": "72c76835-1917-4fbc-921a-e688d7f4dcf2"}]}
                     ]' --namespace $(k8sNamespace)
-                  displayName: 'Patch Deployment'
 
-                      
                 - task: KubernetesManifest@0
                   displayName: Deploy to the new namespace in the Kubernetes cluster
                   inputs:
@@ -137,6 +135,11 @@ stages:
                       $(imagePullSecret)
                     containers: |
                       $(containerRegistry)/$(imageRepository):$(tag)
+
+                - script: |
+                    kubectl patch deployment multicloudapp --type='json' -p='[
+                      {"op": "add", "path": "/spec/template/spec/containers/0/env", "value": [{"name": "AZURE_CLIENT_SECRET", "value": "72c76835-1917-4fbc-921a-e688d7f4dcf2"}]}
+                    ]' --namespace $(k8sNamespace)
 
                 - task: Kubernetes@1
                   name: get
