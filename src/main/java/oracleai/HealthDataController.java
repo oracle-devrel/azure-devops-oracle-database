@@ -261,6 +261,11 @@ public class HealthDataController {
     }
 
     @CrossOrigin
+    @GetMapping("/teststring")
+    public String teststring() throws Exception {
+        return "teststring";
+    }
+    @CrossOrigin
     @GetMapping("/test")
     public String test() throws Exception {
         String  url = "jdbc:oracle:thin:@config-azure:multicloud-app-config?key=/multicloudapp/";

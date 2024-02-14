@@ -16,6 +16,9 @@ public class AIApplication {
     public static final String VISIONAI_XRAY_BREASTCANCER_MODEL_OCID = System.getenv("VISIONAI_XRAY_BREASTCANCER_MODEL_OCID");
     public static final String VISIONAI_XRAY_LUNGCANCER_MODEL_OCID = System.getenv("VISIONAI_XRAY_LUNGCANCER_MODEL_OCID");
     public static final String VISIONAI_XRAY_PNEUMONIA_MODEL_OCID = System.getenv("VISIONAI_XRAY_PNEUMONIA_MODEL_OCID");
+    public static final String AZURE_CLIENT_ID = System.getenv("AZURE_CLIENT_ID");
+    public static final String AZURE_CLIENT_SECRET = System.getenv("AZURE_CLIENT_SECRET");
+    public static final String AZURE_TENANT_ID = System.getenv("AZURE_TENANT_ID");
 
     static {
 		System.out.println("AIApplication.static initializer SPRING_DATASOURCE_USERNAME:" + System.getenv("SPRING_DATASOURCE_USERNAME"));
@@ -29,6 +32,9 @@ public class AIApplication {
 		System.out.println("AIApplication.static initializer OBJECTSTORAGE_BUCKETNAME:" + OBJECTSTORAGE_BUCKETNAME);
 		System.out.println("AIApplication.static initializer ORDS_ENDPOINT_URL:" + ORDS_ENDPOINT_URL);
 		System.out.println("AIApplication.static initializer OCI_VISION_SERVICE_ENDPOINT:" + OCI_VISION_SERVICE_ENDPOINT);
+		System.out.println("AIApplication.static initializer AZURE_CLIENT_ID:" + AZURE_CLIENT_ID);
+		System.out.println("AIApplication.static initializer AZURE_CLIENT_SECRET:" + AZURE_CLIENT_SECRET);
+		System.out.println("AIApplication.static initializer AZURE_TENANT_ID:" + AZURE_TENANT_ID);
 	}
 
 	public static void main(String[] args) {
