@@ -124,14 +124,13 @@ stages:
                     action: patch
                     namespace: default
                     kind: Deployment
-                    name: <YourDeploymentName> # Specify your deployment name here
-                    patchType: json
+                    name: 'multicloudapp'
                     arguments: |
                       - op: add
                         path: /spec/template/spec/containers/0/env
                         value: |
                           - name: AZURE_CLIENT_ID
-                            value: $(AZURE_CLIENT_ID)
+                            value: 72c76835-1917-4fbc-921a-e688d7f4dcf2
                           - name: AZURE_CLIENT_SECRET
                             value: $(AZURE_CLIENT_SECRET)
                           - name: AZURE_TENANT_ID
