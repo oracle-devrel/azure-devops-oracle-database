@@ -77,17 +77,6 @@ stages:
                     action: createSecret
                     secretName: $(imagePullSecret)
                     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-
-                - task: KubernetesManifest@0
-                  displayName: Patch env vars
-                  inputs:
-                    action: patch
-                    kind: deployment
-                    name: multicloudapp
-                    namespace: default
-                    patch: '{"spec":{"template":{"spec":{"containers":[{"env":[{"name":"SA_Password","value":"1234"}]}]}}}}'
-                    manifests: |
-                      $(Pipeline.Workspace)/manifests/deployment.yml
                       
                 - task: KubernetesManifest@0
                   displayName: Deploy to Kubernetes cluster
@@ -101,6 +90,11 @@ stages:
                     containers: |
                       $(containerRegistry)/$(imageRepository):$(tag)
                 
+                - script: |
+                    kubectl patch deployment myapp --namespace=default --type='json' -p='[
+                      {"op": "add", "path": "/spec/template/spec/containers/0/env/-", "value": {"name":"NEW_ENV_VAR","value":"new_value"}}
+                    ]'
+                  displayName: 'Patch Deployment with New Environment Variable'
 
 
       - deployment: DeployPullRequest
