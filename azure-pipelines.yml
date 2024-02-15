@@ -89,12 +89,7 @@ stages:
                       $(imagePullSecret)
                     containers: |
                       $(containerRegistry)/$(imageRepository):$(tag)
-                
-                - script: |
-                    kubectl patch deployment myapp --namespace=default --type='json' -p='[
-                      {"op": "add", "path": "/spec/template/spec/containers/0/env/-", "value": {"name":"NEW_ENV_VAR","value":"new_value"}}
-                    ]'
-                  displayName: 'Patch Deployment with New Environment Variable'
+
 
 
       - deployment: DeployPullRequest
@@ -144,7 +139,7 @@ stages:
 
                 - script: |
                     kubectl patch deployment multicloudapp --type='json' -p='[
-                      {"op": "add", "path": "/spec/template/spec/containers/0/env", "value": [{"name": "AZURE_LOG_LEVEL", "value": "verbose"}, {"name": "AZURE_CLIENT_SECRET0", "value": "$(AZURE_CLIENT_SECRET)"}, {"name": "AZURE_CLIENT_ID", "value": "72c76835-1917-4fbc-921a-e688d7f4dcf2"}, {"name": "AZURE_CLIENT_SECRET", "value": "72c76835-1917-4fbc-921a-e688d7f4dcf2"}, {"name": "AZURE_TENANT_ID", "value": "5b743bc7-c1e2-4d46-b4b5-a32eddac0286"}]}
+                      {"op": "add", "path": "/spec/template/spec/containers/0/env", "value": [{"name": "AZURE_LOG_LEVEL", "value": "verbose"}, {"name": "AZURE_CLIENT_ID0", "value": "$(AZURE_CLIENT_ID)"}, {"name": "AZURE_CLIENT_ID", "value": "72c76835-1917-4fbc-921a-e688d7f4dcf2"}, {"name": "AZURE_CLIENT_SECRET", "value": "72c76835-1917-4fbc-921a-e688d7f4dcf2"}, {"name": "AZURE_TENANT_ID", "value": "5b743bc7-c1e2-4d46-b4b5-a32eddac0286"}]}
                     ]' --namespace default
 
                 - task: Kubernetes@1
