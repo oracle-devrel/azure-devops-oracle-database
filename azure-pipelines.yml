@@ -85,7 +85,7 @@ stages:
                     kind: deployment
                     name: multicloudapp
                     namespace: default
-                    patch: '{"spec":{"template":{"spec":{"containers":[{"env":[{"name": "AZURE_LOG_LEVEL", "value": "verbose"}, {"name": "AZURE_CLIENT_SECRET0", "value": "$(AZURE_CLIENT_SECRET)"}, {"name": "AZURE_CLIENT_ID", "value": "72c76835-1917-4fbc-921a-e688d7f4dcf2"}, {"name": "AZURE_CLIENT_SECRET", "value": "SGM8Q~gJECFHxlVtf403hM_lv.HKYrSueTO.4aWk"}, {"name": "AZURE_TENANT_ID", "value": "5b743bc7-c1e2-4d46-b4b5-a32eddac0286"}]}]}}}}'
+                    patch: '{"spec":{"template":{"spec":{"containers":[{"env":[{"name":"SA_Password","value":"1234"}]}]}}}}'
                     manifests: |
                       $(Pipeline.Workspace)/manifests/deployment.yml
                       
