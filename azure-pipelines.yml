@@ -55,6 +55,11 @@ stages:
 
           - upload: manifests
             artifact: manifests
+            
+          - script: |
+              yq eval '.spec.template.spec.containers[0].env += [{"name": "testname", "value": "testvalue"}]' -i $(Pipeline.Workspace)/manifests/deployment.yml
+            displayName: 'Add Environment Variable with yq'
+
 
   - stage: Deploy
     displayName: Deploy stage
