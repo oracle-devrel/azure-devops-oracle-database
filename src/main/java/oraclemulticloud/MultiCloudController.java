@@ -1,13 +1,13 @@
-package oracleai;
+package oraclemulticloud;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import oracleai.geojson.Feature;
-import oracleai.geojson.FeatureCollection;
+import oraclemulticloud.geojson.Feature;
+import oraclemulticloud.geojson.FeatureCollection;
 
 import java.sql.*;
 
-import oracleai.json.AnnualDeathCause;
-import oracleai.json.CancerOpenResearch;
+import oraclemulticloud.json.AnnualDeathCause;
+import oraclemulticloud.json.CancerOpenResearch;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +22,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/data")
-public class HealthDataController {
+public class MultiCloudController {
 
     private String schema = "DEMOUSER."; //including "." suffix, eg "DEMOUSER.", if other than current user for some reason
 
     JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public HealthDataController(DataSource dataSource) {
+    public MultiCloudController(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 

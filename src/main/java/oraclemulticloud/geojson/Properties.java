@@ -1,4 +1,4 @@
-package oracleai.geojson;
+package oraclemulticloud.geojson;
 
 import lombok.Getter;
 import lombok.Setter;

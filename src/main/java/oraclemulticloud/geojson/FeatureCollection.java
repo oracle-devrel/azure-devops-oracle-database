@@ -1,4 +1,4 @@
-package oracleai.geojson;
+package oraclemulticloud.geojson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;

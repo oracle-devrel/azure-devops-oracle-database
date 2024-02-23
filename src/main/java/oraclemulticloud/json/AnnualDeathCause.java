@@ -1,12 +1,7 @@
-package oracleai.json;
+package oraclemulticloud.json;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
-import oracleai.geojson.Feature;
-import oracleai.geojson.FeatureCollection;
-
-import java.util.List;
 
 public class AnnualDeathCause {
 

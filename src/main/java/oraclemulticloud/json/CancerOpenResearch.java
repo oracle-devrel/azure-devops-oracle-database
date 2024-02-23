@@ -1,4 +1,4 @@
-package oracleai.json;
+package oraclemulticloud.json;
 
 import lombok.Getter;
 import lombok.Setter;
