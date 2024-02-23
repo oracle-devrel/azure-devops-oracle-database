@@ -17,6 +17,8 @@
 	<properties>
 		<oracle.jdbc.version>23.3.0.23.09</oracle.jdbc.version>
 		<spring.boot.version>3.1.2</spring.boot.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<dependencies>
