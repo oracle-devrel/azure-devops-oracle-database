@@ -1,0 +1,13 @@
+spring:
+  datasource:
+#    Example where TNS_ADMIN is the location of the wallet
+    url: "jdbc:oracle:thin:@testdb_high?TNS_ADMIN=/locationofwallet"
+    username: testuser
+    password: testpassword
+    driver-class-name: oracle.jdbc.OracleDriver
+    type: oracle.ucp.jdbc.PoolDataSource
+    oracleucp:
+      connection-factory-class-name: oracle.jdbc.pool.OracleDataSource
+logging:
+  level:
+    org.springframework.web.cors: DEBUG
