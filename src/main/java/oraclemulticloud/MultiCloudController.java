@@ -1,6 +1,5 @@
 package oraclemulticloud;
 
-
 import java.sql.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +20,11 @@ public class MultiCloudController {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    @CrossOrigin
     @GetMapping("/teststring")
     public String teststring() throws Exception {
         return "teststring";
     }
-    @CrossOrigin
+
     @GetMapping("/test")
     public String test() throws Exception {
         String  url = "jdbc:oracle:thin:@config-azure:multicloud-app-config?key=/multicloudapp/";
@@ -36,8 +34,9 @@ public class MultiCloudController {
         Connection cn = ds.getConnection();
         Statement st = cn.createStatement();
         String returnString = cn + " ";
-        ResultSet rs = st.executeQuery("SELECT 'Hello, db' FROM sys.dual");
-        if (rs.next()) returnString+= "asdf" + rs.getString(1) + " : ";
+//      Replace with "SELECT 'Hello, db' FROM sys.dual" if cicd_test_table doesn't exist or any other applicable SQL
+        ResultSet rs = st.executeQuery("SELECT * FROM cicd_test_table");
+        if (rs.next()) returnString+= "value = " + rs.getString(1) + " : ";
         return "got the conn :" + returnString;
     }
 
