@@ -60,7 +60,13 @@ stages:
 
           - upload: manifests
             artifact: manifests
-            
+                        - script: |
+          - script: |
+              echo Downloading Liquibase and Oracle JDBC driver
+              wget https://github.com/liquibase/liquibase/releases/download/v4.4.3/liquibase-4.4.3.tar.gz
+              tar -xzf liquibase-4.4.3.tar.gz
+              wget https://path/to/ojdbc8.jar
+            displayName: 'Install Liquibase and Oracle JDBC'
 
 
   - stage: Deploy
@@ -85,11 +91,10 @@ stages:
                     action: createSecret
                     secretName: $(imagePullSecret)
                     dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-                      
+
                 - script: |
                     yq eval '.spec.template.spec.containers[0].env += [{"name": "AZURE_LOG_LEVEL", "value": "verbose"},  {"name": "AZURE_CLIENT_ID", "value": "$(AZURE_CLIENT_ID)"}, {"name": "AZURE_CLIENT_SECRET", "value": "$(AZURE_CLIENT_SECRET)"}, {"name": "AZURE_TENANT_ID", "value": "$(AZURE_TENANT_ID)"}]' -i $(Pipeline.Workspace)/manifests/deployment.yml
                   displayName: 'Add Environment Variable with yq'
-
                 - task: KubernetesManifest@0
                   displayName: Deploy to Kubernetes cluster
                   inputs:
@@ -101,4 +106,21 @@ stages:
                       $(imagePullSecret)
                     containers: |
                       $(containerRegistry)/$(imageRepository):$(tag)
+                - script: |
+                    echo Setting up environment variables
+                    export DB_HOST=$(DB_HOST)
+                    export DB_PORT=$(DB_PORT)
+                    export DB_SERVICE_NAME=$(DB_SERVICE_NAME)
+                    export DB_USERNAME=$(DB_USERNAME)
+                    export DB_PASSWORD=$(DB_PASSWORD)
+      
+                    echo Running Liquibase update
+                    ./liquibase --defaultsFile=path/to/liquibase.properties update
+                  displayName: 'Run Liquibase Update'
+                  env:
+                    DB_HOST: $(DB_HOST)
+                    DB_PORT: $(DB_PORT)
+                    DB_SERVICE_NAME: $(DB_SERVICE_NAME)
+                    DB_USERNAME: $(DB_USERNAME)
+                    DB_PASSWORD: $(DB_PASSWORD)
 
