@@ -89,6 +89,7 @@ stages:
                 - script: |
                     yq eval '.spec.template.spec.containers[0].env += [{"name": "AZURE_LOG_LEVEL", "value": "verbose"},  {"name": "AZURE_CLIENT_ID", "value": "$(AZURE_CLIENT_ID)"}, {"name": "AZURE_CLIENT_SECRET", "value": "$(AZURE_CLIENT_SECRET)"}, {"name": "AZURE_TENANT_ID", "value": "$(AZURE_TENANT_ID)"}]' -i $(Pipeline.Workspace)/manifests/deployment.yml
                   displayName: 'Add Environment Variable with yq'
+
                 - task: KubernetesManifest@0
                   displayName: Deploy to Kubernetes cluster
                   inputs:
