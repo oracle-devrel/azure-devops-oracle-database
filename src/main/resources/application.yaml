@@ -11,3 +11,8 @@ spring:
 logging:
   level:
     org.springframework.web.cors: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [ "prometheus" ]

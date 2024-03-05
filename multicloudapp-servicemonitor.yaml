@@ -1,0 +1,16 @@
+## Copyright (c) 20214 Oracle and/or its affiliates.
+## Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-metrics-exporter
+  labels:
+    app: metrics-exporter
+    release: stable
+spec:
+  endpoints:
+    - interval: 20s
+      port: metrics
+  selector:
+    matchLabels:
+      app: metrics-exporter
