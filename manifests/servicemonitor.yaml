@@ -4,9 +4,8 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: multicloudapp-monitor
-  namespace: default
-labels:
-  release: prometheus-stack
+  labels:
+    release: prometheus-stack
 spec:
   selector:
     matchLabels:
