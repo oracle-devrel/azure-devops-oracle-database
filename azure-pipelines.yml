@@ -65,6 +65,9 @@ stages:
               wget https://github.com/liquibase/liquibase/releases/download/v4.4.3/liquibase-4.4.3.tar.gz
               tar -xzf liquibase-4.4.3.tar.gz
               wget https://download.oracle.com/otn-pub/otn_software/jdbc/233/ojdbc8.jar
+              wget https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-latest.zip
+              sudo apt-get install unzip
+              unzip sqlcl-latest.zip
             displayName: 'Install Liquibase and Oracle JDBC'
 
 
