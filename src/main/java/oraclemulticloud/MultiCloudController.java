@@ -34,7 +34,8 @@ public class MultiCloudController {
         Connection cn = ds.getConnection();
         Statement st = cn.createStatement();
         String returnString = cn + " ";
-//      Replace with "SELECT 'Hello, db' FROM sys.dual" if cicd_test_table doesn't exist or any other applicable SQL
+        //Replace with "SELECT 'Hello, db' FROM sys.dual" or any other applicable SQL if cicd_test_table doesn't exist
+        //Command here can be used to test database changes and liquibase, ie db/changelog/db.changelog-master.xml - eg rollback, etc.
         ResultSet rs = st.executeQuery("SELECT * FROM cicd_test_table");
         if (rs.next()) returnString+= "value = " + rs.getString(1) + " : ";
         return "got the conn :" + returnString;
