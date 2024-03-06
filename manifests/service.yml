@@ -7,5 +7,6 @@ spec:
     ports:
     - port: 8080
       name: http
+      targetPort: 8080
     selector:
         app: multicloudapp
