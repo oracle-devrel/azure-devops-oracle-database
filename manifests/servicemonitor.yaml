@@ -1,4 +1,4 @@
-## Copyright (c) 20214 Oracle and/or its affiliates.
+## Copyright (c) 2024 Oracle and/or its affiliates.
 ## Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -14,4 +14,4 @@ spec:
   endpoints:
     - interval: 20s
       port: http
-      path: "/actuator/prometheus"
+      path: /actuator/prometheus
