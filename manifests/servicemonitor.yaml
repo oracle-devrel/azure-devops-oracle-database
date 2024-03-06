@@ -3,14 +3,14 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: prometheus-metrics-exporter
-  labels:
-    app: metrics-exporter
-    release: stable
+  name: multicloudapp-monitor
+  namespace: default
+labels:
+  release: prometheus-stack
 spec:
-  endpoints:
-    - interval: 20s
-      port: metrics
   selector:
     matchLabels:
-      app: metrics-exporter
+      app: multicloudapp
+  endpoints:
+    - port: "8080"
+      path: "/actuator/prometheus"
