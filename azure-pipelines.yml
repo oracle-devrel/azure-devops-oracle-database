@@ -106,7 +106,7 @@ stages:
                   displayName: Deploy ServiceMonitor
                   inputs:
                     connectionType: Kubernetes Service Connection
-                    kubernetesServiceEndpoint: $(kubernetesServiceConnection
+                    kubernetesServiceEndpoint: $(kubernetesServiceConnection)
                     namespace: default
                     command: apply
                     useConfigurationFile: true
