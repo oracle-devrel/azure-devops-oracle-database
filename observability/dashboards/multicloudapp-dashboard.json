@@ -119,7 +119,7 @@
           "useBackend": false
         }
       ],
-      "title": "Kubernetes Microservice",
+      "title": "Microservice Running in Kubernetes(AKS)",
       "type": "timeseries"
     },
     {
@@ -219,7 +219,7 @@
           "useBackend": false
         }
       ],
-      "title": "Microservices Oracle Database",
+      "title": "Oracle Database Used By AKS Microservice",
       "type": "timeseries"
     }
   ],
@@ -237,6 +237,6 @@
   "timezone": "",
   "title": "MultiCloud Azure DevOps Oracle Database Dashboard",
   "uid": "ec188762-611c-41f8-967d-0f4406e448c7",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
