@@ -4,15 +4,14 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: multicloudapp-monitor
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8080"
   labels:
-    release: prometheus-stack
+    app: multicloudapp
+    release: prometheus
 spec:
   selector:
     matchLabels:
       app: multicloudapp
   endpoints:
-    - port: "8080"
+    - interval: 20s
+      port: http
       path: "/actuator/prometheus"

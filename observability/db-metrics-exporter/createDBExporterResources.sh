@@ -15,3 +15,4 @@ kubectl apply -f metrics-exporter-servicemonitor.yaml
 #kubectl port-forward deployment/prometheus-grafana 3000
 #kubectl port-forward service/prometheus-operated 9090
 #kubectl port-forward deployment/metrics-exporter 9161
+#kubectl port-forward deployment/multicloudapp 8080
