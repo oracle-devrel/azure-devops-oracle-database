@@ -20,6 +20,8 @@ Metrics, logs, and tracing of the entire CI/CD process are observed continuously
 
 ## Getting Started
 
+- Head over to Oracle [LiveLabs](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3914&clear=RR,180&session=17357364342808)
+
 ### Prerequisites  
 
 - A valid email address
