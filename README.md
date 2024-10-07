@@ -1,4 +1,4 @@
-# azure-devops-oracle-database
+# Build MultiCloud Devops using Azure CI/CD Pipelines with Oracle Database Cloud Services
 
 [![License: UPL](https://img.shields.io/badge/license-UPL-green)](https://img.shields.io/badge/license-UPL-green) [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=oracle-devrel_azure-devops-oracle-database)](https://sonarcloud.io/dashboard?id=oracle-devrel_azure-devops-oracle-database)
 
