@@ -11,7 +11,7 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'ba554595-2da8-4cf6-88c4-a57c75966491'
+  dockerRegistryServiceConnection: ''
   imageRepository: 'multicloudapp'
   containerRegistry: 'multicloud.azurecr.io'
   dockerfilePath: '**/Dockerfile'
